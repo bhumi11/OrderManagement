@@ -1,0 +1,45 @@
+<!-- this file contains the form for inserting records -->
+<div class="alert alert-success">
+  <app-manage-order [orderData]="orders" (deleteData)="deleteOrder($event)" (updateData)="updateOrder($event)"></app-manage-order>
+
+
+  <div class="container">
+    <!-- <h1>Insert Order</h1> -->
+    <form [formGroup]="orderDetails" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="name">Order Name:</label>
+        <input type="text" class="form-control" placeholder="Enter order" formControlName="name">
+        <div *ngIf="orderDetails.get('name').invalid && (orderDetails.get('name').dirty || orderDetails.get('name').touched)"
+          class="alert alert-danger">
+          <div *ngIf="orderDetails.get('name').errors">
+            Order Name is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Order Price:</label>
+        <input type="number" class="form-control" placeholder="Enter price" formControlName="price">
+        <div *ngIf="orderDetails.get('price').invalid && (orderDetails.get('price').dirty || orderDetails.get('price').touched)"
+          class="alert alert-danger">
+          <div *ngIf="orderDetails.get('price').errors">
+            Order price is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="quantity">Order quantity:</label>
+        <input type="number" class="form-control" placeholder="Enter quantity" formControlName="quantity">
+        <div *ngIf="orderDetails.get('quantity').invalid && (orderDetails.get('quantity').dirty || orderDetails.get('quantity').touched)"
+          class="alert alert-danger">
+          <div *ngIf="orderDetails.get('quantity').errors">
+            Order quantity is required.
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+  </div>
+</div>

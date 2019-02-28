@@ -1,0 +1,27 @@
+<!-- this file contains the table and records to be displayed, updated and deleted -->
+<div class="container alert alert-warning">
+  <h2>Orders</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>OrderId</th>
+        <th>OrderName</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orderData">
+        <td>{{ order.id }}</td>
+        <td>{{ order.name }}</td>
+        <td>{{ order.price }}</td>
+        <td>{{ order.quantity }}</td>
+        <td>
+          <button (click)="updateOrderData(order)"><i class="fa fa-edit"></i>Update</button>
+          <button (click)="deleteOrderData(order.id)"><i class="fa fa-trash-alt"></i>Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
